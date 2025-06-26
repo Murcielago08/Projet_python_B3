@@ -1,0 +1,7 @@
+.projet_python/*
+.veille_quoti_auto/__pycache__/*
+.veille_quoti_auto/audios_article/*
+.test_joris.py
+.env
+.veille_quoti_auto/.env
+.tldr_articles.txt
