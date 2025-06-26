@@ -5,3 +5,5 @@
 .env
 .veille_quoti_auto/.env
 .tldr_articles.txt
+test_joris.py
+tldr_articles.txt
