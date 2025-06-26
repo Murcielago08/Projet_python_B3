@@ -1,9 +1,7 @@
-.projet_python/*
-.veille_quoti_auto/__pycache__/*
-.veille_quoti_auto/audios_article/*
-.test_joris.py
-.env
-.veille_quoti_auto/.env
-.tldr_articles.txt
+projet_python/*
+veille_quoti_auto/__pycache__/*
+veille_quoti_auto/audios_article/*
+veille_quoti_auto/.env
+support_client_e-commerce/.env
 test_joris.py
 tldr_articles.txt
