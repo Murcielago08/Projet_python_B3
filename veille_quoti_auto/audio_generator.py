@@ -11,8 +11,12 @@ def text_to_speech(text, filepath, lang="en"):
 
 def generate_audio_for_articles(articles):
     for i, article in enumerate(articles, 1):
+        title = article.get("title", "No title")
+        summary = article.get("resume_ia", "No summary available due to AI error.")
+        
         filename = f"article_{i}.mp3"
-        text = f"Article {i}: {article['title']}. Summary: {article['resume_ia']}"
+        text = f"Article {i}: {title}. Summary: {summary}"
+        
         text_to_speech(text, filename, lang="en")
         article["audio_path"] = filename  # On stocke le chemin du fichier audio
 

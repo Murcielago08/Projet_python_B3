@@ -1,43 +1,52 @@
-import os
-import openai
+from ollama import Client
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = Client()
 
-def enrich_with_ai(articles):
-    enriched_articles = []
-
-    for art in articles:
-        prompt = (
-            f"Catégorise cet article en un seul mot clé pertinent et fais un résumé court:\n\n"
-            f"Titre: {art['title']}\n"
-            f"Résumé: {art['summary']}\n\n"
-            f"Réponds au format JSON:\n"
-            f'{{"categorie": "...", "resume": "..."}}'
+def generate_resume(article):
+    prompt = f"""Résume l'article suivant en 10 mots max en français (juste le résumé, pas d'introduction ni de conclusion, pas de répétition, pas de phrases incomplètes, pas de fautes d'orthographe).
+Titre : {article['title']}
+Résumé original : {article['summary']}
+URL : {article['url']}
+"""
+    try:
+        response = client.chat(
+            model='gemma3:latest',
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
         )
+        return response["message"]["content"].strip()
+    except Exception as e:
+        print(f"❌ Erreur IA locale (résumé) : {e}")
+        return article["summary"]
 
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4o-mini",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=150,
-                temperature=0.7,
-            )
-            content = response.choices[0].message.content
+def generate_categorie(article):
+    prompt = f"""Donne les catégories principales de l'article suivant en français (exemple: Technologie, Santé, Politique, etc).
+Titre : {article['title']}
+Résumé original : {article['summary']}
+URL : {article['url']}
+"""
+    try:
+        response = client.chat(
+            model='gemma3:latest',
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+        # On prend juste le premier mot retourné
+        return response["message"]["content"].strip().split()[0]
+    except Exception as e:
+        print(f"❌ Erreur IA locale (catégorie) : {e}")
+        return "Autre"
 
-            import json
-            data = json.loads(content)
+def enrich_article_with_ai(article, theme=None):
+    article["resume_ia"] = generate_resume(article)
+    # Si un thème est choisi, on le met en catégorie, sinon IA
+    if theme and theme != "all":
+        article["categorie_ia"] = theme.capitalize()
+    else:
+        article["categorie_ia"] = generate_categorie(article)
+    return article
 
-            art["categorie_ia"] = data.get("categorie", "Erreur IA: catégorie manquante")
-            art["resume_ia"] = data.get("resume", "Erreur IA: résumé manquant")
-
-            print(f"✨ Enrichissement IA : {art['title'][:50]}...")
-
-        except Exception as e:
-            erreur_msg = f"Erreur IA: {str(e)}"
-            print(f"❌ {erreur_msg}")
-            art["categorie_ia"] = erreur_msg
-            art["resume_ia"] = erreur_msg
-
-        enriched_articles.append(art)
-
-    return enriched_articles
+def enrich_with_ai(articles, theme=None):
+    return [enrich_article_with_ai(article, theme=theme) for article in articles]

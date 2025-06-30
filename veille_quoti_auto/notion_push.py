@@ -21,9 +21,20 @@ def upload_audio_to_notion(filepath):
     # On retourne None pour dire pas de lien externe.
     return None
 
-def send_to_notion(articles):
+def send_to_notion(articles, theme=None):
     for art in articles:
         try:
+            # Ajoute le thème et la catégorie IA si différente
+            categories = []
+            theme_val = art.get("theme")
+            cat_ia = art.get("categorie_ia")
+            if theme_val:
+                categories.append(theme_val.capitalize())
+            if cat_ia and cat_ia.capitalize() not in categories:
+                categories.append(cat_ia.capitalize())
+            if not categories:
+                categories = ["Autre"]
+
             props = {
                 "Titre": {
                     "title": [{"text": {"content": art.get("title", "Sans titre")}}]
@@ -38,14 +49,14 @@ def send_to_notion(articles):
                     "rich_text": [{"text": {"content": art.get("summary", "Pas de résumé")}}]
                 },
                 "Date de récupération": {
-                    "date": {"start": art.get("date", date.today().isoformat())}
+                    "date": {"start": art["date"]}
                 },
                 "Résumé IA": {
                     "rich_text": [{"text": {"content": art.get("resume_ia", "Non généré")}}]
                 },
-                # "Catégorie": {
-                #     "select": {"name": art.get("categorie_ia", "Autre")}
-                # }
+                "Catégorie": {
+                    "multi_select": [{"name": c} for c in categories]
+                }
             }
 
             # Gestion de l'audio si on a un lien externe
