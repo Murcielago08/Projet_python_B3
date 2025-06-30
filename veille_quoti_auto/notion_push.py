@@ -24,14 +24,16 @@ def upload_audio_to_notion(filepath):
 def send_to_notion(articles, theme=None):
     for art in articles:
         try:
-            # Ajoute le thème et la catégorie IA si différente
+            # Ajoute le thème et la catégorie IA (toujours les deux si présents, sans doublon)
             categories = []
             theme_val = art.get("theme")
             cat_ia = art.get("categorie_ia")
             if theme_val:
-                categories.append(theme_val.capitalize())
-            if cat_ia and cat_ia.capitalize() not in categories:
-                categories.append(cat_ia.capitalize())
+                categories.append(str(theme_val).capitalize())
+            if cat_ia:
+                cat_ia_cap = str(cat_ia).capitalize()
+                if cat_ia_cap not in categories:
+                    categories.append(cat_ia_cap)
             if not categories:
                 categories = ["Autre"]
 
