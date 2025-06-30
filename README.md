@@ -61,7 +61,7 @@ Pour utiliser ce projet dans le cadre de l'automatisation d'une veille quotidien
 
 ### 1. Configuration des variables d'environnement
 
-Créez un fichier `.env` à la racine du projet ou exportez les variables suivantes dans votre terminal :
+Créez un fichier `.env` à la racine du projet (dans le dossier veille_quoti_auto) ou configurer les variables suivantes :
 
 - **Pour Notion :**
   - `NOTION_TOKEN` : votre token d'intégration Notion à créer ici [lien notion token](https://www.notion.so/profile/integrations) (ex : `secret_xxxxx...`)
