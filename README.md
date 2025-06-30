@@ -103,3 +103,7 @@ python main.py
 Lors de l'exécution, le programme vous demandera :
 - **de choisir un thème** parmi la liste proposée (webdev, infosec, product, devops, founders, design, marketing, crypto, fintech, data) ou de saisir `all` pour récupérer tous les thèmes,
 - **et d'entrer une date** au format AAAA-MM-JJ (ou appuyez sur Entrée pour utiliser la date du jour).
+
+**Et voilà** 🎉
+
+Tout est sur votre notion sauf les audios qui sont dans un dossier nommé *audios_acticles_xxxx_xx-xx-xx* 

@@ -1,8 +1,10 @@
 projet_python/*
 veille_quoti_auto/__pycache__/*
-veille_quoti_auto/audios_article/*
+veille_quoti_auto/audios_articles_*/*
 veille_quoti_auto/.env
 support_client_e-commerce/.env
 test_joris.py
 tldr_articles.txt
 *.mp3
+veille_quoti_auto/notion_push_without_audio.py
+veille_quoti_auto/audio_generator_no_push.py
