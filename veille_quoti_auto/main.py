@@ -30,8 +30,8 @@ def main():
     print("📨 Envoi vers Notion...")
     send_to_notion(articles, theme=theme)
 
-    print("🧹 Nettoyage fichiers audio locaux...")
-    delete_local_audios(articles)
+    # print("🧹 Nettoyage fichiers audio locaux...")
+    # delete_local_audios(articles)
 
 if __name__ == "__main__":
     main()
