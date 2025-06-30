@@ -5,3 +5,4 @@ veille_quoti_auto/.env
 support_client_e-commerce/.env
 test_joris.py
 tldr_articles.txt
+*.mp3

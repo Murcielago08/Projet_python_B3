@@ -11,29 +11,27 @@ NOTION_DATABASE_ID = os.getenv("NOTION_DATABASE_ID")
 notion = Client(auth=NOTION_TOKEN)
 
 def upload_audio_to_notion(filepath):
-    """
-    Notion API ne permet pas d’uploader directement un fichier.
-    On doit uploader le fichier quelque part (ex: stockage cloud) puis mettre l'URL ici.
-    Comme solution simple, on suppose que le fichier est déjà accessible via URL externe.
-    Si non, il faut héberger ailleurs ou stocker local (mais pas possible dans Notion).
-    """
-    # Pour simplifier, on ne gère pas l'upload ici.
-    # On retourne None pour dire pas de lien externe.
     return None
 
 def send_to_notion(articles, theme=None):
     for art in articles:
         try:
-            # Ajoute le thème et la catégorie IA (toujours les deux si présents, sans doublon)
+            # Ajoute le thème + toutes les catégories IA (sans doublon)
             categories = []
             theme_val = art.get("theme")
-            cat_ia = art.get("categorie_ia")
             if theme_val:
                 categories.append(str(theme_val).capitalize())
-            if cat_ia:
-                cat_ia_cap = str(cat_ia).capitalize()
-                if cat_ia_cap not in categories:
-                    categories.append(cat_ia_cap)
+            if art.get("categories_ia"):
+                for c in art["categories_ia"]:
+                    c_cap = str(c).capitalize()
+                    if c_cap not in categories:
+                        categories.append(c_cap)
+            else:
+                cat_ia = art.get("categorie_ia")
+                if cat_ia:
+                    cat_ia_cap = str(cat_ia).capitalize()
+                    if cat_ia_cap not in categories:
+                        categories.append(cat_ia_cap)
             if not categories:
                 categories = ["Autre"]
 
