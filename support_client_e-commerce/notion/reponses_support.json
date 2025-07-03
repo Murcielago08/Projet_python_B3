@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "categorie": "livraison",
+    "reponse_generique": "Bonjour, votre commande est en cours de livraison et vous sera livrée sous 3 à 5 jours ouvrés. Vous pouvez suivre votre colis grâce au lien envoyé par email."
+  },
+  {
+    "id": 2,
+    "categorie": "remboursement",
+    "reponse_generique": "Bonjour, votre demande de remboursement a bien été prise en compte. Le traitement peut prendre jusqu'à 7 jours ouvrés. Nous vous tiendrons informé par email."
+  },
+  {
+    "id": 3,
+    "categorie": "probleme_produit",
+    "reponse_generique": "Bonjour, nous sommes désolés d'apprendre que vous rencontrez un problème avec votre produit. Merci de nous préciser le problème (détail, photos éventuelles) pour que nous puissions vous aider rapidement."
+  },
+  {
+    "id": 4,
+    "categorie": "annulation_commande",
+    "reponse_generique": "Bonjour, votre demande d'annulation de commande est en cours de traitement. Si la commande n'a pas encore été expédiée, elle sera annulée et remboursée."
+  },
+  {
+    "id": 5,
+    "categorie": "modification_commande",
+    "reponse_generique": "Bonjour, nous avons bien reçu votre demande de modification. Nous vérifions si cela est possible selon l'état de préparation de la commande et vous revenons rapidement."
+  },
+  {
+    "id": 6,
+    "categorie": "autre",
+    "reponse_generique": "Bonjour, merci pour votre message. Nous étudions votre demande et revenons vers vous au plus vite."
+  }
+]

@@ -55,6 +55,30 @@ Votre environnement Python est maintenant prêt à l'emploi.
 
 ## Automatisation du support client e-commerce
 
+## Structure technique
+
+- Base de données MySQL `crm_ecommerce` :
+  - Table `client` : clients avec email, nom, prénom
+  - Table `commande` : commandes liées aux clients
+  
+- Bases Notion (exemple en JSON) :
+  - `Réponses support` : modèles de réponses par catégorie
+  - `Contacts clients` : suivi des tickets support
+  
+- Script Python :
+  - Connexion à la base MySQL
+  - Recherche client et commandes
+  - Catégorisation automatique de la demande (règles simples)
+  - Génération de réponse personnalisée
+  - Simulation d’enregistrement du ticket dans Notion
+
+## Comment utiliser
+
+1. Créez la base MySQL avec le script SQL fourni.
+2. Adaptez la connexion MySQL dans le script Python.
+3. Implémentez la connexion réelle avec l’API Notion pour manipuler les bases « Réponses support » et « Contacts clients ».
+4. Intégrez ce script dans un workflow déclenché par formulaire ou email (ex: via Zapier, n8n, ou un serveur web).
+
 ## Cas pratique - Automatisation d'une veille quotidienne
 
 Pour utiliser ce projet dans le cadre de l'automatisation d'une veille quotidienne, vous devez configurer les accès à Notion et à Ollama via des variables d'environnement.

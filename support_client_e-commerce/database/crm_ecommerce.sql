@@ -1,0 +1,22 @@
+
+CREATE DATABASE IF NOT EXISTS crm_ecommerce DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+USE crm_ecommerce;
+
+-- Table client
+CREATE TABLE IF NOT EXISTS client (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  nom VARCHAR(100),
+  prenom VARCHAR(100)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS commande (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  date DATE NOT NULL,
+  montant DECIMAL(10,2) NOT NULL,
+  nb_articles INT NOT NULL,
+  id_client INT NOT NULL,
+  FOREIGN KEY (id_client) REFERENCES client(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB;

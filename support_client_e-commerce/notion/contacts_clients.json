@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "email_client": "jean.dupont@example.com",
+    "nom_prenom": "Dupont Jean",
+    "id_commande": 25,
+    "message_initial": "Bonjour, ma commande est en retard, pouvez-vous m'aider ?",
+    "categorie": "livraison",
+    "reponse_personnalisee": "Bonjour Jean, votre commande #25 passée le 2025-06-30 d'un montant de 120.00€ est bien en cours de livraison. Vous la recevrez sous peu.",
+    "statut": "Pas commencé",
+    "date_ticket": "2025-07-02T10:15:00"
+  },
+  {
+    "id": 2,
+    "email_client": "marie.leroy@example.com",
+    "nom_prenom": "Leroy Marie",
+    "id_commande": 30,
+    "message_initial": "Je souhaite annuler ma commande, est-ce possible ?",
+    "categorie": "annulation_commande",
+    "reponse_personnalisee": "Bonjour Marie, votre demande d'annulation pour la commande #30 est en cours de traitement. Nous vous confirmerons par email dès que ce sera fait.",
+    "statut": "En cours",
+    "date_ticket": "2025-07-01T14:05:00"
+  },
+  {
+    "id": 3,
+    "email_client": "pierre.martin@example.com",
+    "nom_prenom": "Martin Pierre",
+    "id_commande": null,
+    "message_initial": "Bonjour, j'ai un problème avec un produit que j'ai acheté la semaine dernière.",
+    "categorie": "probleme_produit",
+    "reponse_personnalisee": "Bonjour Pierre, merci de nous avoir contactés. Pouvez-vous préciser le problème rencontré avec votre produit ?",
+    "statut": "Pas commencé",
+    "date_ticket": "2025-07-02T09:30:00"
+  },
+  {
+    "id": 4,
+    "email_client": "client.inconnu@example.com",
+    "nom_prenom": "Client inconnu",
+    "id_commande": null,
+    "message_initial": "Je n'arrive pas à retrouver ma commande.",
+    "categorie": "autre",
+    "reponse_personnalisee": "Bonjour, nous ne trouvons pas votre profil dans notre base. Pouvez-vous nous confirmer votre email ou numéro de commande ?",
+    "statut": "Pas commencé",
+    "date_ticket": "2025-07-02T11:00:00"
+  }
+]
